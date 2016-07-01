@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Counter</title>
+		<meta name="description" content="Coding Dojo Flask Counter Assignment">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+	</head>
+	<body>
+    <div class="container">
+      <section class="jumbotron">
+<!-- heading and description -->
+        <h1>My Simple Counter</h1>
+        <p>The counter below keeps track of how many times this page is visited during a single internet session.</p>
+        <p>The buttons offer additional counting options.</p>
+<!-- counter -->
+        <h1 class="bg-info">{{ session['tally'] }} {{ session['vis'] }}</h1>
+<!-- ninjas button -->
+        <p><a class="btn btn-primary btn-lg" href="/ninjas" role="button">Ninjas!</a>
+        Click the Ninjas! button to add 2 to the counter.</p>
+<!-- hackers button -->
+        <p><a class="btn btn-primary btn-lg" href="/hackers" role="button">Hackers!</a>
+        Click the Hackers! button to reset the counter to 1.</p>
+
+      </section>
+    </div>
+	</body>
+</html>
