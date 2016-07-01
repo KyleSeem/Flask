@@ -1,0 +1,37 @@
+.container{
+  margin: auto;
+  margin-top: 20px;
+  height: auto;
+  overflow: hidden;
+}
+section{
+  border: 2px solid #2e6da4;
+}
+h1{
+  text-decoration: underline;
+  text-align: center;
+  margin: 50px;
+}
+.form-group{
+  font-size: 1.25em;
+}
+.form-control{
+  font-size: 90%;
+}
+textarea{
+  padding-left: 15px;
+  margin-top: 10px;
+}
+button.btn.btn-primary{
+  font-size: 1.25em;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+table.table{
+  font-size: 1.25em;
+  width: 75%;
+  margin: auto;
+}
+td.labels{
+  width: 175px;
+}
