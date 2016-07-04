@@ -1,0 +1,25 @@
+.container{
+  border: 1px solid #ddd;
+  margin: auto;
+  margin-top: 50px;
+  padding: 10px;
+}
+form{
+  border: 1px solid grey;
+  padding: 10px;
+  margin: 5px;
+  margin-bottom: 15px;
+}
+#wallet{
+  width: 100%;
+  margin-left: 25px;
+}
+.well{
+  margin: 20px;
+  clear: both;
+  height: 100px;
+}
+#reset{
+  float: right;
+  margin: 15px;
+}

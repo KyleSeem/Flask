@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Ninja Gold!</title>
+    <meta name="description" content="Coding Dojo Ninja Gold Flask Assignment">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+	</head>
+	<body>
+    <div class="container">
+      <div id="wallet">
+        <h3>Your gold: {{ session['wallet'] }}</h3>
+      </div>
+
+<!-- FARM -->
+      <div class="col-md-3">
+        <form action="/process_money" method="post">
+          <h3>Farm</h3>
+          <p>(earns 10-20 gold pieces)</p>
+          <input type="hidden" name="action" value="farm">
+          <button class="btn btn-primary" type="submit">Find Gold!</button>
+        </form>
+      </div>
+
+<!-- CAVE -->
+      <div class="col-md-3">
+        <form action="/process_money" method="post">
+          <h3>Cave</h3>
+          <p>(earns 5-10 gold pieces)</p>
+          <input type="hidden" name="action" value="cave">
+          <button class="btn btn-primary" type="submit">Find Gold!</button>
+        </form>
+      </div>
+
+<!-- HOUSE -->
+      <div class="col-md-3">
+        <form action="/process_money" method="post">
+          <h3>House</h3>
+          <p>(earns 2-5 gold pieces)</p>
+          <input type="hidden" name="action" value="house">
+          <button class="btn btn-primary" type="submit">Find Gold!</button>
+        </form>
+      </div>
+
+<!-- CASINO -->
+      <div class="col-md-3">
+        <form action="/process_money" method="post">
+          <h3>Casino</h3>
+          <p>(earns or loses 0-50 gold pieces)</p>
+          <input type="hidden" name="action" value="casino">
+          <button class="btn btn-primary" type="submit">Find Gold!</button>
+        </form>
+      </div>
+
+      <div class="well">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <p class="{{ category }}">{{ message }}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+      </div>
+      <a id="reset" class="btn btn-primary" href="/reset">Reset Wallet</a>
+
+    </div> <!-- closes container -->
+  </body>
+</html>
