@@ -17,6 +17,15 @@
       <section class="col-md-8">
         <div class="row">
           <h1>Dojo Survey</h1>
+					{% with messages = get_flashed_messages() %}
+						{% if messages %}
+							<div class="flashes alert alert-danger">
+								{% for message in messages %}
+									<p>{{ message }}</p>
+								{% endfor %}
+							</div>
+						{% endif %}
+					{% endwith %}
         </div>
 <!-- form -->
           <form class="form-horizontal" action="/result" method="post">
@@ -27,7 +36,7 @@
                   Your Name:
                 </div>
                 <div class="col-md-6">
-                  <input class="form-control" type="text" name="name">
+                  <input class="form-control" type="text" name="name" {{session['name']}}>
                 </div>
               </div>
             </div>
@@ -62,10 +71,10 @@
                     <option> </option>
                     <option>BASIC</option>
                     <option>Binary</option>
-                    <option>C#</option>
                     <option>JavaScript</option>
                     <option>PHP</option>
                     <option>Python</option>
+										<option>Ruby</option>
                   </select>
                 </div>
               </div>
@@ -74,7 +83,7 @@
             <div class="form-group">
               <div class="row">
                 <div class="col-md-offset-1 col-md-4">
-                  Comments (optional):
+                  Comments:
                 </div>
               </div>
               <div class="row">

@@ -22,23 +22,23 @@
         <table class="table" style="border-bottom: 1px solid #ddd;">
           <tr>
             <td class="labels">Name: </td>
-            <td>{{ request.form['name'] }}</td>
+            <td>{{ session['name'] }}</td>
           </tr>
           <tr>
             <td class="labels">Dojo Location: </td>
-            <td>{{ request.form['location'] }}</td>
+            <td>{{ session['location'] }}</td>
           </tr>
           <tr>
             <td class="labels">Favorite Language: </td>
-            <td>{{ request.form['language'] }}</td>
+            <td>{{ session['language'] }}</td>
           </tr>
           <tr>
             <td class="labels">Comments: </td>
-            <td>{{ request.form['comments'] }}</td>
+            <td>{{ session['comments'] }}</td>
           </tr>
         </table>
         <div class="col-md-offset-9 col-md-1" style="margin-top: 100px;">
-          <button class="btn btn-primary">Go Back</button>
+          <a class="btn btn-primary" href="/reset">Go Back</a>
         </div>
       </section>
     </div>
