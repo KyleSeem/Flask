@@ -1,0 +1,21 @@
+.container{
+  margin: auto;
+  margin-top: 50px;
+  height: auto;
+  width: 600px;
+  border: 1px solid gray;
+}
+h1{
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: 30px;
+}
+input{
+  margin-bottom: 10px;
+}
+button.btn.btn-primary{
+  float: right;
+  clear: both;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
