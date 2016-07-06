@@ -1,0 +1,45 @@
+.container{
+  margin: auto;
+  height: auto;
+  width: auto;
+  margin-top: 20px;
+  padding: 20px;
+}
+h1{
+  text-align: center;
+  margin: auto;
+}
+h3{
+  text-align: center;
+  margin-bottom: 20px;
+}
+section{
+  overflow: hidden;
+}
+section.all{
+  border: 1px solid #ddd;
+  width: 800px;
+  margin: auto;
+  padding: 25px;
+}
+section.indies{
+  border: 1px solid #ddd;
+  width: 600px;
+  margin: auto;
+  padding: 25px;
+}
+section.indies img{
+  margin: auto;
+  display: block;
+}
+.btn{
+  width: 106px;
+  margin: auto;
+  display: block;
+}
+#btn.btn{
+  width: 120px;
+  margin: auto;
+  margin-top: 20px;
+  display: block;
+}
