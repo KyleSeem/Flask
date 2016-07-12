@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Login and Registration</title>
+    <meta name="description" content="Coding Dojo Assignment - Python Course">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 		<!-- Latest compiled and minified CSS -->
+ 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+ 		<!-- Latest compiled and minified JavaScript -->
+ 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+ 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+    <div class="container" style="width: 800px; margin-top: 20px;">
+<!-- alert message -->
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="alert alert-danger">
+            {% for message in messages %}
+              <p>{{ message }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+<!-- register section -->
+      <section style="display: inline-block; width: 500px;">
+        <h1>Register</h1>
+        <form action="/create_user" method="POST">
+        <!--first name -->
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" class="form-control" name="first_name" id="first_name" value="{{ session['first_name'] }}">
+          </div>
+        <!--last name -->
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" class="form-control" name="last_name" id="last_name" value="{{ session['last_name'] }}">
+          </div>
+        <!-- email -->
+          <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" name="email" id="email" value="{{ session['email'] }}">
+          </div>
+        <!-- password -->
+          <div class="form-group">
+            <label>Password</label>
+            <input type="text" class="form-control" name="password" id="password">
+          </div>
+        <!-- verify password -->
+          <div class="form-group">
+            <label>Confirm Password</label>
+            <input type="text" class="form-control" name="confirm_pw" id="confirm_pw">
+          </div>
+          <input type="submit" class="btn" style="float: right;" value="Register">
+        </form>
+      </section>
+
+<!-- login section -->
+      <section style="display: inline-block; vertical-align: top; float: right;">
+        <h1>Login</h1>
+        <form action="/login" method="POST">
+        <!-- email -->
+          <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" name="email" id="email" value="{{ session['email'] }}">
+          </div>
+        <!-- password -->
+          <div class="form-group">
+            <label>Password</label>
+            <input type="text" class="form-control" name="password" id="password">
+          </div>
+          <input type="submit" class="btn" style="float: right;" value="Login">
+        </form>
+      </section>
+
+    </div>
+	</body>
+</html>
