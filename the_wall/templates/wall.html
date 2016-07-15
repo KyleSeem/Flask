@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+    <title>The Wall</title>
+    <meta name="description" content="Coding Dojo Assignment - Python Course">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 		<!-- Latest compiled and minified CSS -->
+ 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+ 		<!-- Latest compiled and minified JavaScript -->
+ 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+ 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"> -->
+  </head>
+	<body>
+    <div class="container" style="width: 800px;">
+      <header style="display: flex; border-bottom: 1px solid #ddd; margin-bottom: 50px;">
+        <h1 style="flex: 4">CodingDojo Wall</h1>
+        <h3 style="flex: 3">Hi {{ session['username'] }}!</h3>
+        <a class="btn btn-link" href="/log_out">Log Out</a>
+      </header>
+<!-- post new message section -->
+      <section>
+        <h3>Post a message</h3>
+        <form action="/add_message" method="POST">
+          <textarea class="form-control" rows="4" name="new_message" id="new_message"></textarea>
+          <input type="submit" class="btn btn-primary" style="float: right; margin: 15px;" value="Post message">
+        </form>
+      </section>
+<!-- wall of posted messages section -->
+      <section style="display: inline-block;">
+        {% if messages %}
+          {% for message in messages %}
+						<div class="panel panel-default" style="margin-top: 30px; margin-bottom:30px;">
+              <div class="panel-heading" style="font-size: 1.2em">
+								<label>{{ message['author'] }} - {{ message['message_date'] }}</label>
+							</div>
+              <div class="panel-body" style="font-size: 1.2em">{{ message['message'] }}</div>
+					<!-- if comments -->
+								{% if comments %}
+									<ul class="list-group">
+										{% for comment in comments %}
+											{% if comment['message_id'] == message['id'] %}
+												<li class="list-group-item" style="padding-left: 50px;">
+													<label>{{ comment['comment_author'] }} - {{ comment['comment_date']}}</label>
+													<p>{{ comment['comment'] }}</p>
+												</li>
+											{% endif %}
+										{% endfor %} <!-- endfor for comments -->
+									</ul>
+								{% endif %} <!-- endif for comments -->
+
+						<!-- comments form -->
+							<div class="panel-footer" style="overflow: hidden;">
+                <div class="form-group">
+                  <form action="/add_comment" method="POST">
+										<input type="hidden" name="related_message_id" value="{{ message['id'] }}">
+                    <textarea class="form-control" rows="2" name="new_comment" id="new_comment"></textarea>
+                    <input type="submit" class="btn btn-success" style="float: right; margin: 15px; margin-bottom: 5px;" value="Post comment">
+                  </form>
+                </div>
+              </div> <!-- closes panel footer -->
+						</div> <!-- closes panel -->
+          {% endfor %} <!-- endfor for messages -->
+        {% endif %} <!-- endif for messages -->
+      </section>
+
+
+    </div>
+	</body>
+</html>
