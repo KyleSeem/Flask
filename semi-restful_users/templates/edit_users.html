@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Semi-Restful Users</title>
+    <meta name="description" content="Coding Dojo Assignment - Python Course">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 		<!-- Latest compiled and minified CSS -->
+ 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+ 		<!-- Latest compiled and minified JavaScript -->
+ 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+ 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"> -->
+	</head>
+	<body>
+		<div class="container">
+			<section style="width: 600px;">
+				<h1>Edit User {{ this_user['id'] }}</h1>
+		<!-- alerts section -->
+				{% with messages = get_flashed_messages() %}
+					{% if messages %}
+						<div class="alert alert-danger">
+							{% for message in messages %}
+								<p>{{ message }}</p>
+							{% endfor %}
+						</div>
+					{% endif %}
+				{% endwith %}
+		<!-- edit existing user form -->
+				<form action="/users/{{ this_user['id'] }}/update" method="POST">
+					<div class="form-group">
+						<label>First Name</label>
+						<input type="text" class="form-control" name="first_name" id="first_name">
+					</div>
+
+					<div class="form-group">
+						<label>Last Name</label>
+						<input type="text" class="form-control" name="last_name" id="last_name">
+					</div>
+
+					<div class="form-group">
+						<label>Email</label>
+						<input type="text" class="form-control" name="email" id="email">
+					</div>
+					<input type="submit" class="btn btn-primary" value="Update">
+				</form>
+				<p>
+					<a href="/users" class="btn">View All Users</a>
+					<a href="/users/{{ this_user['id'] }}" class="btn">View This User</a>
+				</p>
+			</section>
+		</div>
+	</body>
+</html>
